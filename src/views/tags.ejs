@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+
+<main class="container py-4">
+
+  <h1>Thèmes</h1>
+  
+  <div>
+    <% for(const tag of tags) {%>
+      <% console.log(tag.quizzes)%>
+      <span class="badge bg-primary p-2 mb-1"><%= tag.name %></span>
+      <% if (tag.quizzes.length > 0) { %>
+        <ul>
+          <% for(const quizz of tag.quizzes) {%>
+            <li><a href="/tags/<%= quizz.id %>"><%= quizz.title %></a></li>
+          <% } %>
+        </ul>
+      <% } else { %>
+          <p>Aucun quizz dans cette catégorie pour le moment....</p>
+      <% } %>
+    <% } %>
+
+  </div>
+</main>
+
+<%- include("partials/footer") %>

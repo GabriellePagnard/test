@@ -1,0 +1,46 @@
+<%- include("partials/header") %>
+
+
+
+<main class="container py-4">
+
+  <h1 class="text-center m-2"><%= quizz.title %></h1>
+
+  <h2 class="text-center m-2"><%= quizz.description %></h1>
+
+  <h2 class="small text-end">Par <%= quizz.author.firstname %></h2>
+
+  <h2 class="small text-end">Date de création : <%= dateFormatee %></h2>
+
+  <h3>Thèmes</h3>
+  <ul class="mb-4 p-0">
+    <% for(const tag of quizz.tags) { %>
+    <li class="badge bg-primary"><%= tag.name %></li>
+    <% } %>
+  </ul>
+
+  <% for(const question of quizz.questions) { %>
+  <h3>Questions</h3>
+
+    <span class="badge bg-info"><%= question.level.name %></span>
+    <p class="fw-bold mb-1"><%= question.description %></p>
+
+<% for(const answer of question.propositions) { %>
+
+    <div class="mb-3 ms-2">
+      <div>
+        <input type="radio" id="#" name="#" value="#">
+        <label for="#"><%= answer.description %></label>
+      </div>
+    </div>
+
+    <% } %>
+
+    <p class="fst-italic text-secondary"><%= question.anecdote %></p>
+
+
+    <% } %>
+  <button class="d-block mx-auto btn btn-primary mb-4">Envoyer</button>
+</main>
+
+<%- include("partials/footer") %>
